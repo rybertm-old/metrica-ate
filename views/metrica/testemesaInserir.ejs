@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inserir Teste de Mesa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery para form Modal  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- fim jQuery para form Modal  -->
+    <script>
+        //função para carregar valores do bd tabela EDITORA
+        function carregaSelect(elementoS, elementoP) {
+            var select_c = document.getElementById(elementoS).value;
+            document.getElementById(elementoP).value = select_c;
+        }
+
+    </script>
+</head>
+
+<body class="container" style="margin-top: 50px;">
+
+    <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%- messages.error %>
+        </div>
+        <% } %>
+
+            <div class="card">
+                <div class="card-header">Inserir Teste de Mesa</div>
+                <div class="card-body">
+
+                    <form action="/testemesa/adicionar" method="post">
+                        <label>Data do Teste de Mesa:</label>
+                        <input type="text" class="form-control form-control-sm" name="dt_testemesa"
+                            value="<%= dt_testemesa %>" autocomplete="off" required>
+                        <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
+                        <label>ID do Caso Teste:</label>
+                        <select class="form-control form-control-sm" id="Lista_p" name="select"
+                            onchange="carregaSelect('Lista_p', 'Caso')">
+                            <% for (var i=0; i < dataP.length; i++) { %>
+                                <option value="<%= dataP[i].id_casoteste %>">
+                                    <%= dataP[i].id_casoteste %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <label>ID CASO TESTE:</label>
+                        <input type="text" class="form-control form-control-sm" id="Caso" name="id_ct">
+                        <label>ID dos Dados:</label>
+                        <select class="form-control form-control-sm" id="Lista_o" name="select"
+                            onchange="carregaSelect('Lista_o', 'Dados')">
+                            <% for (var i=0; i < dataO.length; i++) { %>
+                                <option value="<%= dataO[i].id_dadostm %>">
+                                    <%= dataO[i].id_dadostm %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <label>ID DADOS:</label>
+                        <input type="text" class="form-control form-control-sm" id="Dados" name="iddados">
+                        <br>
+                        <input type="submit" class="btn btn-warning" value="Inserir" />
+
+                        <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
+
+                        <a type="button" class="btn btn-dark" href="http://localhost:3000/testemesa/">Voltar</a>
+                    </form>
+                </div>
+            </div>
+</body>
+
+</html>

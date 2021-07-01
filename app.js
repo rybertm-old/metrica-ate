@@ -25,6 +25,7 @@ app.use(session({
 app.use(flash());
 
 app.use('/casoteste', require('./routes/casoteste.js'));
+app.use('/testemesa', require('./routes/testemesa.js'));
 
 // erro de pagina 400
 app.use(function (req, res, next) {
