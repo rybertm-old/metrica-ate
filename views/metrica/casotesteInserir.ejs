@@ -11,6 +11,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- fim jQuery para form Modal  -->
+    <script>
+        //função para carregar valores do bd tabela EDITORA
+        function carregaSelect(elementoS, elementoP) {
+            var select_c = document.getElementById(elementoS).value;
+            document.getElementById(elementoP).value = select_c;
+        }
+
+    </script>
 </head>
 
 <body class="container" style="margin-top: 50px;">
@@ -28,21 +36,27 @@
                     <form action="/casoteste/adicionar" method="post">
                         <label>ID Programa P:</label>
                         <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
-                        <select class="form-control form-control-sm" id="Lista_p" name="select">
+                        <select class="form-control form-control-sm" id="Lista_p" name="select"
+                            onchange="carregaSelect('Lista_p', 'P')">
                             <% for (var i=0; i < dataP.length; i++) { %>
                                 <option value="<%= dataP[i].idprogramap %>">
                                     <%= dataP[i].idprogramap %>
                                 </option>
                                 <% } %>
                         </select>
+                        <label>ID PROGRAMAP:</label>
+                        <input type="text" class="form-control form-control-sm" id="P" name="idprogramap">
                         <label>ID Programa O:</label>
-                        <select class="form-control form-control-sm" id="Lista_o" name="select">
+                        <select class="form-control form-control-sm" id="Lista_o" name="select"
+                            onchange="carregaSelect('Lista_o', 'O')">
                             <% for (var i=0; i < dataO.length; i++) { %>
                                 <option value="<%= dataO[i].idprogramao %>">
                                     <%= dataO[i].idprogramao %>
                                 </option>
                                 <% } %>
                         </select>
+                        <label>ID PROGRAMAO:</label>
+                        <input type="text" class="form-control form-control-sm" id="O" name="idprogramao">
                         <br>
                         <input type="submit" class="btn btn-warning" value="Inserir" />
 
