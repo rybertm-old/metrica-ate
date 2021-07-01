@@ -25,22 +25,17 @@
                 <div class="card-header"> Inserir ProgramaO</div>
                 <div class="card-body">
 
-                    <form action="/casoteste/adicionar" method="post">
+                    <form action="/programa_o/adicionar" method="post">
                         <label>dt_codificacao:</label>
                         <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
-                        <select class="form-control form-control-sm" id="Lista_p" name="select">
-                            <% for (var i=0; i < dataP.length; i++) { %>
-                                <option value="<%= dataP[i].idprogramap %>">
-                                    <%= dataP[i].idprogramap %>
-                                </option>
-                                <% } %>
-                        </select>
+                        <input type="text" class="form-control form-control-sm" name="dt_codificacao"
+                            value="<%= dt_codificacao %>" autocomplete="off" required>
                         <br>
                         <input type="submit" class="btn btn-warning" value="Inserir" />
 
                         <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
 
-                        <a type="button" class="btn btn-dark" href="http://localhost:3000/casoteste/">Voltar</a>
+                        <a type="button" class="btn btn-dark" href="http://localhost:3000/programa_o/">Voltar</a>
                     </form>
                 </div>
             </div>
