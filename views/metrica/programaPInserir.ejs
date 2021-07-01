@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inserir Caso Teste</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery para form Modal  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- fim jQuery para form Modal  -->
+</head>
+
+<body class="container" style="margin-top: 50px;">
+
+    <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%- messages.error %>
+        </div>
+        <% } %>
+
+            <div class="card">
+                <div class="card-header"> Inserir ProgramaP</div>
+                <div class="card-body">
+
+                    <form action="/programa_p/adicionar" method="post">
+                       
+                        <label>codigo_p:</label>
+                        <input type="text" class="form-control form-control-sm" name="#"
+                            value="" autocomplete="off" required>
+                        
+                        <label>dt_implementacao:</label>
+                        <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
+                        <input type="text" class="form-control form-control-sm" name="dt_implementacao"
+                            value="<%= dt_implementacao %>" autocomplete="off" required>
+                        <br>
+                        <input type="submit" class="btn btn-warning" value="Inserir" />
+
+                        <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
+
+                        <a type="button" class="btn btn-dark" href="http://localhost:3000/programa_p/">Voltar</a>
+                    </form>
+                </div>
+            </div>
+</body>
+
+</html>
