@@ -5,7 +5,7 @@ var dbConn = require('../db/db.js');
 
 // ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/'
 router.get('/', function (req, res, next) {
-    dbConn.query('SELECT * FROM programao', function (err, queryTeste) {
+    dbConn.query('SELECT * FROM Programa_O', function (err, queryTeste) {
         if (err) {
             req.flash('error', err.message);
             // preparar dados para página em views/metrica/index.ejs. 'metrica' é a pasta em view
@@ -18,62 +18,61 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/adicionar', function (req, res, next) {
-    res.redirect('metrica/programaOInserir.ejs');
+    res.render('metrica/programaOInserir.ejs', {
+        dt_codificacao: '',
+    });
 });
 
 router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminho indicado em inserir.ejs
-    let idprogramap = req.body.idprogramap;
-    let idprogramao = req.body.idprogramao;
+    let dt_codificacao = req.body.dt_codificacao;
 
     var insereDados = {
-        idprogramap: idprogramap,
-        idprogramao: idprogramao
+        dt_codificacao: dt_codificacao
     }
 
     // ROTA PARA INSERIR REGISTRO
-    dbConn.query('INSERT INTO caso_teste SET ?', insereDados, function (err, result) {
+    dbConn.query('INSERT INTO Programa_O SET ?', insereDados, function (err, result) {
         if (err) { //if(err) throw err
             req.flash('error', err.message)
             // renderizar página inserir.ejs
-            res.render('metrica/casotesteInserir.ejs', {
-                idprogramap: parseInt(insereDados.idprogramap),
-                idprogramao: parseInt(insereDados.idprogramao)
+            res.render('metrica/programaOInserir.ejs', {
+                dt_codificacao: insereDados.dt_codificacao,
             })
         } else {
             console.log(result.insertId);
             req.flash('success', 'Inserido com sucesso');
-            res.redirect('/casoteste/adicionar');
+            res.redirect('/programa_o/adicionar');
         }
     });
 });
 
-// rota (post) para atualizar livros
-router.post('/programao/atualizar/:IdProgramao', function (req, res, next) {
-    let idProgramao = req.params.IdProgramao;
-    let dtCodificacao = req.body.dtCodificacao;
-    let errors = false;
+// // rota (post) para atualizar livros
+// router.post('/programao/atualizar/:IdProgramao', function (req, res, next) {
+//     let idProgramao = req.params.IdProgramao;
+//     let dt_codificacao = req.body.dt_codificacao;
+//     let errors = false;
 
-    if (!errors) {
-        var editaDados = {
-            dtCodificacao: dtCodificacao
-        }
-        // update query
-        dbConn.query('UPDATE caso_teste SET ? WHERE idProgramao = ' + idProgramao,
-            editaDados, function (err, result) {
-                if (err) {
-                    req.flash('error', err)
-                    // render para editar.ejs com os mesmos dados
-                    res.render('metrica/programaOEditar.ejs', {
-                        idProgramao: req.params.IdProgramao;
-                        dtCodificacao: editaDados.dtCodificacao
-                    })
-                } else {
-                    req.flash('success', 'ProgramaO atualizado com sucesso');
-                    res.redirect('/programao');
-                }
-            })
-    }
-})
+//     if (!errors) {
+//         var editaDados = {
+//             dt_codificacao: dt_codificacao
+//         }
+//         // update query
+//         dbConn.query('UPDATE Programa_O SET ? WHERE idProgramao = ' + idProgramao,
+//             editaDados, function (err, result) {
+//                 if (err) {
+//                     req.flash('error', err)
+//                     // render para editar.ejs com os mesmos dados
+//                     res.render('metrica/programaOEditar.ejs', {
+//                         idProgramao: req.params.IdProgramao,
+//                         dt_codificacao: editaDados.dt_codificacao
+//                     })
+//                 } else {
+//                     req.flash('success', 'ProgramaO atualizado com sucesso');
+//                     res.redirect('/programao');
+//                 }
+//             })
+//     }
+// })
 
 
 
