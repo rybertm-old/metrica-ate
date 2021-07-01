@@ -25,6 +25,7 @@ app.use(session({
 app.use(flash());
 
 app.use('/casoteste', require('./routes/casoteste.js'));
+app.use('/programao', require('./routes/programaO.js'));
 
 // erro de pagina 400
 app.use(function (req, res, next) {
@@ -43,5 +44,8 @@ app.use(function (err, req, res, next) {
 });
 
 console.log("Aplicação Rodando, acesse http://localhost:3000/ para utilizá-la");
+console.log(" -Para ver o caso teste utilize http://localhost:3000/casoteste");
+console.log(" -Para ver o programaO utilize http://localhost:3000/programao");
+
 
 module.exports = app;
