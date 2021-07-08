@@ -28,6 +28,7 @@ app.use('/casoteste', require('./routes/casoteste.js'));
 app.use('/testemesa', require('./routes/testemesa.js'));
 app.use('/programa_o', require('./routes/programaO.js'));
 app.use('/programa_p', require('./routes/programaP.js'));
+app.use('/caminho', require('./routes/caminho.js'));
 
 // erro de pagina 400
 app.use(function (req, res, next) {
@@ -49,5 +50,6 @@ console.log("Aplicação Rodando, acesse http://localhost:3000/ para utilizá-la
 console.log(" -Para ver o caso teste utilize http://localhost:3000/casoteste");
 console.log(" -Para ver o programaO utilize http://localhost:3000/programa_o");
 console.log(" -Para ver o programaO utilize http://localhost:3000/programa_p");
+console.log(" -Para ver o programaO utilize http://localhost:3000/caminho");
 
 module.exports = app;
