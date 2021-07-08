@@ -9,10 +9,10 @@ router.get('/', function (req, res, next) {
         if (err) {
             req.flash('error', err.message);
             // preparar dados para página em views/metrica/index.ejs. 'metrica' é a pasta em view
-            res.render('metrica/casoteste.ejs', { dataProduto: '' });
+            res.render('metrica/caminho.ejs', { dataProduto: '' });
         } else {
             // preparar dados para página em views/editora/index.ejs
-            res.render('metrica/casoteste.ejs', { dataProduto: queryTeste });
+            res.render('metrica/caminho.ejs', { dataProduto: queryTeste });
         }
     });
 });

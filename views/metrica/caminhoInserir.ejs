@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inserir Teste de Mesa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery para form Modal  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- fim jQuery para form Modal  -->
+    <script>
+        //função para carregar valores do bd tabela EDITORA
+        function carregaCateg() {
+            var select_categ = document.getElementById("Lista_categ").value;
+            document.getElementById("Categoria").value = select_categ;
+        }
+    </script>
+</head>
+
+<body class="container" style="margin-top: 50px;">
+
+    <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%- messages.error %>
+        </div>
+        <% } %>
+
+            <div class="card">
+                <div class="card-header">Inserir caminho</div>
+                <div class="card-body">
+
+                    <form action="/caminho/adicionar" method="post">
+                        <label>id_caminho</label>
+                        <input type="text" class="form-control form-control-sm" name="id_caminho"
+                            value="<%= id_caminho %>" autocomplete="off" required>
+                        <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
+                        <label>descricao</label>
+                        <input type="text" class="form-control form-control-sm" name="descricao"
+                            value="<%= descricao %>" autocomplete="off" required>
+                        <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
+                        <label>def_uso</label>
+                        <input type="text" class="form-control form-control-sm" name="def_uso"
+                            value="<%= def_uso %>" autocomplete="off" required>
+                        <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
+                        <label>subcaminho</label>
+                        <input type="text" class="form-control form-control-sm" name="subcaminho"
+                            value="<%= subcaminho %>" autocomplete="off" required>
+                        
+                        <!--label>ID do Caso Teste:</label>
+                        <select class="form-control form-control-sm" id="Lista_categ" name="select" onchange="carregaCateg()">
+                        <% for (var i=0; i < dataProduto.length; i++) { %>
+                            <option value="<%= dataProduto[i].IdCategoria %>">
+                                <%= dataProduto[i].idp %>
+                            </option>
+                            <% } %>
+                        </select>-->
+                        <input type="submit" class="btn btn-warning" value="Inserir" />
+
+                        <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
+
+                        <a type="button" class="btn btn-dark" href="http://localhost:3000/testemesa/">Voltar</a>
+                    </form>
+                </div>
+            </div>
+</body>
+
+</html>
