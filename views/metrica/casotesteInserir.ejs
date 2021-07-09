@@ -20,51 +20,54 @@
     </script>
 </head>
 
-<body class="container" style="margin-top: 50px;">
+<body>
+    <%- include("../header") -%>
+        <div class="container mt-4">
 
-    <% if (messages.error) { %>
-        <div class="alert alert-danger" role="alert">
-            <%- messages.error %>
-        </div>
-        <% } %>
-
-            <div class="card">
-                <div class="card-header"> Inserir Caso Teste </div>
-                <div class="card-body">
-
-                    <form action="/casoteste/adicionar" method="post">
-                        <label>ID Programa P:</label>
-                        <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
-                        <select class="form-control form-control-sm" id="Lista_p" name="select"
-                            onchange="carregaSelect('Lista_p', 'P')">
-                            <% for (var i=0; i < dataP.length; i++) { %>
-                                <option value="<%= dataP[i].idprogramap %>">
-                                    <%= dataP[i].idprogramap %>
-                                </option>
-                                <% } %>
-                        </select>
-                        <label>ID PROGRAMAP:</label>
-                        <input type="text" class="form-control form-control-sm" id="P" name="idprogramap">
-                        <label>ID Programa O:</label>
-                        <select class="form-control form-control-sm" id="Lista_o" name="select"
-                            onchange="carregaSelect('Lista_o', 'O')">
-                            <% for (var i=0; i < dataO.length; i++) { %>
-                                <option value="<%= dataO[i].IdO %>">
-                                    <%= dataO[i].idprogramao %>
-                                </option>
-                                <% } %>
-                        </select>
-                        <label>ID PROGRAMAO:</label>
-                        <input type="text" class="form-control form-control-sm" id="O" name="idprogramao">
-                        <br>
-                        <input type="submit" class="btn btn-warning" value="Inserir" />
-
-                        <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
-
-                        <a type="button" class="btn btn-dark" href="http://localhost:3000/casoteste/">Voltar</a>
-                    </form>
+            <% if (messages.error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%- messages.error %>
                 </div>
-            </div>
+                <% } %>
+
+                    <div class="card">
+                        <div class="card-header"> Inserir Caso Teste </div>
+                        <div class="card-body">
+
+                            <form action="/casoteste/adicionar" method="post">
+                                <label>ID Programa P:</label>
+                                <!-- Select com dados do bd tabela CATEGORIA - UM-PARA-MUITOS -->
+                                <select class="form-control form-control-sm" id="Lista_p" name="select"
+                                    onchange="carregaSelect('Lista_p', 'P')">
+                                    <% for (var i=0; i < dataP.length; i++) { %>
+                                        <option value="<%= dataP[i].idprogramap %>">
+                                            <%= dataP[i].idprogramap %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                                <label>ID PROGRAMAP:</label>
+                                <input type="text" class="form-control form-control-sm" id="P" name="idprogramap">
+                                <label>ID Programa O:</label>
+                                <select class="form-control form-control-sm" id="Lista_o" name="select"
+                                    onchange="carregaSelect('Lista_o', 'O')">
+                                    <% for (var i=0; i < dataO.length; i++) { %>
+                                        <option value="<%= dataO[i].IdO %>">
+                                            <%= dataO[i].idprogramao %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                                <label>ID PROGRAMAO:</label>
+                                <input type="text" class="form-control form-control-sm" id="O" name="idprogramao">
+                                <br>
+                                <input type="submit" class="btn btn-warning" value="Inserir" />
+
+                                <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
+
+                                <a type="button" class="btn btn-dark" href="http://localhost:3000/casoteste/">Voltar</a>
+                            </form>
+                        </div>
+                    </div>
+        </div>
 </body>
 
 </html>

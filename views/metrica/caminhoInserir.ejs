@@ -20,39 +20,42 @@
     </script>
 </head>
 
-<body class="container" style="margin-top: 50px;">
+<body>
 
-    <% if (messages.error) { %>
-        <div class="alert alert-danger" role="alert">
-            <%- messages.error %>
-        </div>
-        <% } %>
+    <%- include("../header") -%>
+        <div class="container mt-4">
 
-            <div class="card">
-                <div class="card-header">Inserir caminho</div>
-                <div class="card-body">
+            <% if (messages.error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%- messages.error %>
+                </div>
+                <% } %>
 
-                    <form action="/caminho/adicionar" method="post">
-                        <label>id_caminho</label>
-                        <input type="text" class="form-control form-control-sm" name="id_caminho"
-                            value="<%= id_caminho %>" autocomplete="off" required>
-                        <label>descricao</label>
-                        <input type="text" class="form-control form-control-sm" name="descricao"
-                            value="<%= descricao %>" autocomplete="off" required>
-                        <label>def_uso</label>
-                        <input type="text" class="form-control form-control-sm" name="def_uso"
-                            value="<%= def_uso %>" autocomplete="off" required>
-                        <label>subcaminho</label>
-                        <input type="text" class="form-control form-control-sm" name="subcaminho"
-                            value="<%= subcaminho %>" autocomplete="off" required>
-                        <label>ido</label>
-                        <input type="text" class="form-control form-control-sm" name="ido"
-                            value="<%= ido %>" autocomplete="off" required>
-                        <label>idp</label>
-                        <input type="text" class="form-control form-control-sm" name="idp"
-                            value="<%= idp %>" autocomplete="off" required>
-                        
-                        <!--label>ID do Caso Teste:</label>
+                    <div class="card">
+                        <div class="card-header">Inserir caminho</div>
+                        <div class="card-body">
+
+                            <form action="/caminho/adicionar" method="post">
+                                <label>id_caminho</label>
+                                <input type="text" class="form-control form-control-sm" name="id_caminho"
+                                    value="<%= id_caminho %>" autocomplete="off" required>
+                                <label>descricao</label>
+                                <input type="text" class="form-control form-control-sm" name="descricao"
+                                    value="<%= descricao %>" autocomplete="off" required>
+                                <label>def_uso</label>
+                                <input type="text" class="form-control form-control-sm" name="def_uso"
+                                    value="<%= def_uso %>" autocomplete="off" required>
+                                <label>subcaminho</label>
+                                <input type="text" class="form-control form-control-sm" name="subcaminho"
+                                    value="<%= subcaminho %>" autocomplete="off" required>
+                                <label>ido</label>
+                                <input type="text" class="form-control form-control-sm" name="ido" value="<%= ido %>"
+                                    autocomplete="off" required>
+                                <label>idp</label>
+                                <input type="text" class="form-control form-control-sm" name="idp" value="<%= idp %>"
+                                    autocomplete="off" required>
+
+                                <!--label>ID do Caso Teste:</label>
                         <select class="form-control form-control-sm" id="Lista_categ" name="select" onchange="carregaCateg()">
                         <% for (var i=0; i < dataProduto.length; i++) { %>
                             <option value="<%= dataProduto[i].IdCategoria %>">
@@ -60,14 +63,15 @@
                             </option>
                             <% } %>
                         </select>-->
-                        <input type="submit" class="btn btn-warning" value="Inserir" />
+                                <input type="submit" class="btn btn-warning" value="Inserir" />
 
-                        <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
+                                <!-- !!!!! Redirecionamento do botão voltar consertado !!!!!!! -->
 
-                        <a type="button" class="btn btn-dark" href="http://localhost:3000/caminho/">Voltar</a>
-                    </form>
-                </div>
-            </div>
+                                <a type="button" class="btn btn-dark" href="http://localhost:3000/caminho/">Voltar</a>
+                            </form>
+                        </div>
+                    </div>
+        </div>
 </body>
 
 </html>

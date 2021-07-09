@@ -24,6 +24,8 @@ app.use(session({
 
 app.use(flash());
 
+
+app.use('/', require('./routes/index.js'));
 app.use('/casoteste', require('./routes/casoteste.js'));
 app.use('/testemesa', require('./routes/testemesa.js'));
 app.use('/programa_o', require('./routes/programaO.js'));
