@@ -4,7 +4,7 @@ var conexao = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'metrica_ate',
+    database: 'empresa',
     multipleStatements: true,
 });
 // TODO: Conectar a banco
