@@ -11,7 +11,7 @@ function p_uso(S, T, V, operador, operando_a, operando_b, operando_rel, res_sim,
         let operadores = 0;
         // Σ; m = 1, m <= T...
         for (let m = 1; m <= T; m++) { // Quantidade de operadores
-            operadores += operador[m];
+            operadores += operador;
         }
 
         let proposicoes = 0;
