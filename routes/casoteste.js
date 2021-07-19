@@ -11,15 +11,15 @@ router.get('/', function (req, res, next) {
             // preparar dados para página em views/metrica/index.ejs. 'metrica' é a pasta em view
             res.render('metrica/casoteste.ejs', { dataProduto: '' });
         } else {
-            // preparar dados para página em views/editora/index.ejs
+            // preparar dados para página em views/metrica/index.ejs
             res.render('metrica/casoteste.ejs', { dataProduto: queryTeste });
         }
     });
 });
 
 router.get('/adicionar', function (req, res, next) {
-    var sql1 = 'SELECT id_o FROM programa_o';
-    var sql2 = 'SELECT id_p FROM programa_p';
+    var sql1 = 'SELECT id_p FROM programa_p';
+    var sql2 = 'SELECT id_o FROM programa_o';
     dbConn.query(sql1, function (er, queryP) {
         if (er) {
             req.flash('error', er.message)

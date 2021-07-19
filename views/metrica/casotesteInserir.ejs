@@ -40,8 +40,8 @@
                                 <select class="form-control form-control-sm" id="Lista_p" name="select"
                                     onchange="carregaSelect('Lista_p', 'P')">
                                     <% for (var i=0; i < dataP.length; i++) { %>
-                                        <option value="<%= dataP[i].idprogramap %>">
-                                            <%= dataP[i].idprogramap %>
+                                        <option value="<%= dataP[i].id_p %>">
+                                            <%= dataP[i].id_p %>
                                         </option>
                                         <% } %>
                                 </select>
@@ -51,8 +51,8 @@
                                 <select class="form-control form-control-sm" id="Lista_o" name="select"
                                     onchange="carregaSelect('Lista_o', 'O')">
                                     <% for (var i=0; i < dataO.length; i++) { %>
-                                        <option value="<%= dataO[i].IdO %>">
-                                            <%= dataO[i].idprogramao %>
+                                        <option value="<%= dataO[i].id_o %>">
+                                            <%= dataO[i].id_o %>
                                         </option>
                                         <% } %>
                                 </select>
