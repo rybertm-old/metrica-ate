@@ -1,24 +1,38 @@
-function c_uso(N, M, Q, R, operandos, operadores, constantes) {
+// Calcula c-uso, retornando o total, e os c-uso de cada linha(parcelas), todos valores como string formatado em Hexadecimal
+function c_uso(N, operandos, operadores, constantes) {
     let usoSum = 0;
+    let cuso_parcelas = []
+    // ∑wj + ∑dl + ∑ck
     for (let i = 0; i < N; i++) {
         let operandosSum = 0;
-        for (let j = 0; j < M; j++) {
-            operandosSum += operandos[j];
+        // ∑wj
+        for (let j = 0; j < operandos[i].length; j++) {
+            operandosSum += operandos[i][j];
         }
 
         let operadoresSum = 0;
-        for (let j = 0; j < Q; j++) {
-            operadoresSum += operadores[j];
+        // ∑dl
+        for (let j = 0; j < operadores[i].length; j++) {
+            operadoresSum += operadores[i][j];
         }
 
         let constantesSum = 0;
-        for (let j = 0; j < R; j++) {
-            constantesSum += constantes[j];
+        // ∑ck
+        for (let j = 0; j < constantes[i].length; j++) {
+            constantesSum += constantes[i][j];
         }
 
-        usoSum += operandosSum + operadoresSum + constantesSum;
+        let parcela = operandosSum + operadoresSum + constantesSum;
+        cuso_parcelas.push(parcela.toString(16).toUpperCase());
+        console.log(`c-uso linha ${i + 1}: ${parcela.toString(16).toUpperCase()}`)
+
+        usoSum += parcela;
     }
 
-    // Retorna como string formatado em Hexadecimal
-    return usoSum.toString(16);
+    return {
+        cuso: usoSum.toString(16).toUpperCase(),
+        cuso_parcelas
+    }
 }
+
+module.exports = c_uso
