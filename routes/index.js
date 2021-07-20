@@ -3,6 +3,7 @@ var router = express.Router();
 var dbConn = require('../db/db.js');
 var c_uso = require('../metricas/c_uso')
 
+
 function is_operador(variavel) {
   return variavel === "=" ||
     variavel === "+" ||
@@ -67,6 +68,9 @@ router.get('/', function (req, res, next) {
 
       // Calcula c_uso
       let { cuso, cuso_parcelas } = c_uso(totalLinhasCuso, operandos_cuso, operadores_cuso, constantes_cuso);
+
+
+  
 
       res.render('index', {
         datatm: querytm[0],
