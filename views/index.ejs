@@ -56,10 +56,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% var cont=0; for(var i=1; i<=totalLinhas; i++) { cont=0; %>
-                            <% for(var j=0; j < datatm.length; j++) { if(datatm[j].linha==i){ cont
-                              +=parseInt(datatm[j].dado_hexa_p, 16) } %>
-                              <% }%>
+                          <% let cont=0; var SOMcont=0; for(var i=1; i<=totalLinhas; i++) {cont=0; %>
+                            <% for(var j=0; j < datatm.length; j++) { if( (datatm[j].linha==i) &&
+                              (datatm[j].cod_linha.includes("if") || datatm[j].cod_linha.includes("while") ||
+                              datatm[j].cod_linha.includes("for") || datatm[j].cod_linha.includes("switch"))){
+                              cont+=parseInt(datatm[j].dado_hexa_p, 16);} %>
+                              <% } SOMcont +=cont;%>
 
                                 <tr>
                                   <th scope="Linha">
@@ -72,7 +74,7 @@
                                     <%= cuso_parcelas[i - 1] !==undefined ? cuso_parcelas[i - 1] : '-' %>
                                   </td>
                                   <td>
-                                    <%= cont.toString(16) %>
+                                    <%= cont !=0 ? cont.toString(16) : '-' %>
                                   </td>
                                   <td>
                                     4
@@ -121,8 +123,7 @@
                             <%= cuso %>
                           </td>
                           <td>
-                            <!-- INSERIR TOTAL puso AQUI -->
-                            -
+                            <%= SOMcont.toString(16) %>
                           </td>
                           <td>
                             <!-- INSERIR TOTAL vvar AQUI -->
