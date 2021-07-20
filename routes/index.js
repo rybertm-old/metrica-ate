@@ -78,7 +78,7 @@ router.get('/', function (req, res, next) {
       });
 
       // C uso
-      // Total de linhas do programa P que saoo validas para calculo de c_uso
+      // Total de linhas do programa P que sao validas para calculo de c_uso
       let totalLinhasCuso = linhas.length;
       // Vetor que contem um vetor de operandos para cada linha do programa P
       let operandos_cuso = [];
@@ -98,6 +98,7 @@ router.get('/', function (req, res, next) {
 
         // Adiciona os valores dos operadores/operandos/constantes nos seus respectivos vetores, de acordo com sua linha
         dados_cuso.forEach(dado => {
+          // se a coluna tiver dado da linha i
           if (i === parseInt(dado.linha)) {
             if (is_operador(dado.variavel_p)) {
               operadores_cuso[i - 1].push(parseInt(dado.dado_hexa_p, 16));
