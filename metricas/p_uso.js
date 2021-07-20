@@ -1,29 +1,31 @@
-// Entrada: Valores inteiros (??)
-// Saída: Valores em Hexadecimal
-
-// S, T, V, O, a, b, q, r, z
-function p_uso(S, T, V, operador, operando_a, operando_b, operando_rel, res_sim, res_com) {
-    let SOMp_uso = 0;
-
-    // Σ; n = 1, n <= S...
-    for (let n = 1; n <= S; n++) { // Quantidade de predicados
-
-        let operadores = 0;
-        // Σ; m = 1, m <= T...
-        for (let m = 1; m <= T; m++) { // Quantidade de operadores
-            operadores += operador;
+// Calcula c-uso, retornando o total, e os c-uso de cada linha(parcelas), todos valores como string formatado em Hexadecimal
+function p_uso(N, operandos, operadores) {
+    let SOMpuso = 0;
+    let puso_parcelas = []
+    // ∑wj + ∑dl + ∑ck
+    for (let i = 0; i < N; i++) {
+        let operandosSum = 0;
+        // ∑wj
+        for (let j = 0; j < operandos[i].length; j++) {
+            operandosSum += operandos[i][j];
         }
 
-        let proposicoes = 0;
-
-        // Σ; f = 1, f <= V...
-        for (let f = 1; f <= V; f++) { // Quantidade de proposições
-            proposicoes += operando_a + operando_b + operando_rel + res_sim;
+        let operadoresSum = 0;
+        // ∑dl
+        for (let j = 0; j < operadores[i].length; j++) {
+            operadoresSum += operadores[i][j];
         }
 
-        SOMp_uso += operadores + proposicoes + res_com;
+
+        let parcela = operandosSum + operadoresSum;
+        puso_parcelas.push(parcela.toString(16).toUpperCase());
+        SOMpuso += parcela;
     }
 
-    // Retorna como string formatado em Hexadecimal
-    return SOMp_uso.toString(16);
+    return {
+        puso: SOMpuso.toString(16).toUpperCase(),
+        puso_parcelas
+    }
 }
+
+module.exports = p_uso
