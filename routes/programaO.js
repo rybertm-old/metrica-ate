@@ -3,7 +3,7 @@ var router = express.Router();
 var dbConn = require('../db/db.js');
 
 
-// ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/'
+// ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/programao'
 router.get('/', function (req, res, next) {
     dbConn.query('SELECT * FROM Programa_O', function (err, queryTeste) {
         if (err) {
@@ -22,15 +22,15 @@ router.get('/adicionar', function (req, res, next) {
         dt_codificacao: '',
     });
 });
-
-router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminho indicado em inserir.ejs
+//'/adicionar' é o caminho indicado em inserir.ejs
+router.post('/adicionar', function (req, res, _) {    
     let dt_codificacao = req.body.dt_codificacao;
 
     var insereDados = {
         dt_codificacao: dt_codificacao
     }
 
-    // ROTA PARA INSERIR REGISTRO
+    // ROTA PARA INSERIR Programa_O
     dbConn.query('INSERT INTO Programa_O SET ?', insereDados, function (err, result) {
         if (err) { //if(err) throw err
             req.flash('error', err.message)

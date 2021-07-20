@@ -3,7 +3,7 @@ var router = express.Router();
 var dbConn = require('../db/db.js');
 
 
-// ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/'
+// ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/testemesa'
 router.get('/', function (req, res, next) {
     dbConn.query('SELECT * FROM teste_mesa p ORDER BY p.id_testemesa desc', function (err, queryTeste) {
         if (err) {
@@ -54,7 +54,8 @@ router.get('/adicionar', function (req, res, next) {
     });
 });
 
-router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminho indicado em inserir.ejs
+//'/adicionar' é o caminho indicado em inserir.ejs
+router.post('/adicionar', function (req, res, _) {    
     let iddados = req.body.iddados;
     let id_ct = req.body.id_ct;
     let dt_testemesa = req.body.dt_testemesa;
