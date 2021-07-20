@@ -5,7 +5,7 @@ var dbConn = require('../db/db.js');
 
 // ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/'
 router.get('/', function (req, res, next) {
-    dbConn.query('SELECT * from caminho', function (err, queryTeste) {
+    dbConn.query('SELECT * from (caminho inner join programa_o) inner join programa_p', function (err, queryTeste) {
         if (err) {
             req.flash('error', err.message);
             // preparar dados para página em views/metrica/index.ejs. 'metrica' é a pasta em view
@@ -29,7 +29,7 @@ router.get('/adicionar', function (req, res, next) {
 });
 
 router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminho indicado em inserir.ejs
-    let id_caminho = req.body.id_caminho;
+    
     let descricao = req.body.descricao;
     let def_uso = req.body.def_uso;
     let subcaminho = req.body.subcaminho;
@@ -37,7 +37,7 @@ router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminh
     let idp = req.body.idp;
 
     var insereDados = {
-        id_caminho: id_caminho,
+        
         descricao: descricao,
         def_uso: def_uso,
         subcaminho: subcaminho,
@@ -51,7 +51,7 @@ router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminh
             req.flash('error', err.message)
             // renderizar página inserir.ejs
             res.render('metrica/caminhoInserir.ejs', {
-                id_caminho: insereDados.id_caminho,
+               
                 descricao: insereDados.descricao,
                 def_uso: insereDados.def_uso,
                 subcaminho: insereDados.subcaminho,
