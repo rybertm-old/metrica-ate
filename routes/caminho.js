@@ -3,7 +3,7 @@ var router = express.Router();
 var dbConn = require('../db/db.js');
 
 
-// ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/'
+// ROTA PARA mostrar a pagina index.ejs, no evento da pasta raiz '/caminho'
 router.get('/', function (req, res, next) {
     dbConn.query('SELECT * from (caminho inner join programa_o) inner join programa_p', function (err, queryTeste) {
         if (err) {
@@ -17,6 +17,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
+// ROTA PARA inserir caminho
 router.get('/adicionar', function (req, res, next) {
     res.render('metrica/caminhoInserir.ejs', {
         id_caminho: '',
@@ -28,6 +29,7 @@ router.get('/adicionar', function (req, res, next) {
     });
 });
 
+// ROTA PARA inserir caminho
 router.post('/adicionar', function (req, res, _) {    //'/adicionar' é o caminho indicado em inserir.ejs
     
     let descricao = req.body.descricao;
