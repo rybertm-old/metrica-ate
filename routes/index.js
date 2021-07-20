@@ -50,8 +50,13 @@ router.get('/', function (req, res, next) {
       // Vetor que contem um vetor de operandos para cada linha do programa P
       let operandos_puso = [];
 
+      // As variáveis de diferenças pegam quantas linhas do código do programa P possuem
+      // Referência ao num_equacao = 3
       let diferenca = -1, cont_diferenca = 0;
+
+      // Função para fazer o que dito acima
       let dados_puso = querytm[0].filter(dado => {
+
         // Checa se estão relacionadas ao P_uso (num equacao 3)
         if (dado.num_equacao == 3) {
 
@@ -60,10 +65,12 @@ router.get('/', function (req, res, next) {
             diferenca = dado.linha
             cont_diferenca += 1
 
+            // Cria novos arrays dentro do array mais externo
             operandos_puso.push([]);
             operadores_puso.push([]);
           }
 
+          // Checagem se é operando ou operador
           if (is_operador(dado.variavel_p)) {
             operadores_puso[cont_diferenca - 1].push(parseInt(dado.dado_hexa_p, 16));
           } else {

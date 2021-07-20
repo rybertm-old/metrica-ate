@@ -56,6 +56,25 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <!--
+                            Variáveis:
+                            - cont = P_uso por linha de código (programa P)
+                            - SOMcont = P_uso de todas as linhas de código que tem proposições
+
+                            For mais externo:
+                            - 1 até nº de linhas percorridas
+                            - cont zerado no início desse for pois é o valor de p_uso por linha
+
+                            For mais interno:
+                            - 0 até última linha/tupla da tabela
+                            
+                            if:
+                            - Se estiver tratando da linha do for mais externo E
+                            conter no texto trechos que indiquem que é uma proposição
+
+                            Após o for interno é zerado o valor do SOMcont
+
+                          -->
                           <% let cont=0; var SOMcont=0; for(var i=1; i<=totalLinhas; i++) {cont=0; %>
                             <% for(var j=0; j < datatm.length; j++) { if( (datatm[j].linha==i) &&
                               (datatm[j].cod_linha.includes("if") || datatm[j].cod_linha.includes("while") ||
@@ -71,9 +90,11 @@
                                     1
                                   </td>
                                   <td>
+                                    <!-- Printa o C_uso -->
                                     <%= cuso_parcelas[i - 1] !==undefined ? cuso_parcelas[i - 1] : '-' %>
                                   </td>
                                   <td>
+                                    <!-- Printa o P_uso -->
                                     <%= cont !=0 ? cont.toString(16) : '-' %>
                                   </td>
                                   <td>
