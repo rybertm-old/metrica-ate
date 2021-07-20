@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var dbConn = require('../db/db.js');
 var c_uso = require('../metricas/c_uso')
-var ate = require('../metricas/ate')
+
 
 function is_operador(variavel) {
   return variavel === "=" ||
@@ -70,12 +70,10 @@ router.get('/', function (req, res, next) {
       let { cuso, cuso_parcelas } = c_uso(totalLinhasCuso, operandos_cuso, operadores_cuso, constantes_cuso);
 
 
-      // Calcula ate
-      let ate  = cuso + 0 + 0;
+  
 
       res.render('index', {
         datatm: querytm[0],
-        ate,
         totalLinhas,
         cuso,
         cuso_parcelas
