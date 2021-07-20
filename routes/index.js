@@ -101,11 +101,7 @@ router.get('/', function (req, res, next) {
       let { cuso, cuso_parcelas } = c_uso(totalLinhasCuso, operandos_cuso, operadores_cuso, constantes_cuso);
 
 
-<<<<<<< Updated upstream
-  
-=======
-      ////
-
+      // P_uso
       for (let i = 1; i <= totalLinhasPuso; i++) {
         operandos_puso.push([]);
         operadores_puso.push([]);
@@ -123,7 +119,6 @@ router.get('/', function (req, res, next) {
       }
 
       let { puso, puso_parcelas } = p_uso(totalLinhasPuso, operandos_puso, operadores_puso);
->>>>>>> Stashed changes
 
       res.render('index', {
         datatm: querytm[0],
